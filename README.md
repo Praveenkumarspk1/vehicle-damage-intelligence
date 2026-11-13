@@ -13,6 +13,12 @@
 
 ---
 
+<p align="center">
+  <img src="Readme_enhance.png" alt="Vehicle Damage Intelligence Dashboard & Appraisal Platform" width="100%"/>
+</p>
+
+---
+
 ## 🎯 What is this project about?
 
 This project uses **Artificial Intelligence and Computer Vision** to automatically detect, segment, and appraise damage on vehicles, including:
@@ -308,6 +314,26 @@ curl -X POST http://localhost:8000/predict \
 - **Automated Blur & Glare Filter**: Images with severe camera motion blur (Laplacian variance below threshold) or high specular glare (HSV highlight ratio) are flagged to prevent false readings.
 - **IoU & Pixel Mask Verification**: Pixel-level masks measure the exact damage square centimeters for accurate repair vs replace recommendations.
 - **128-D Re-ID Feature Extraction**: Combines color histograms with spatial structural descriptors to ensure identical vehicle orientation matching.
+
+### 📸 Test Suite & Inspection Previews
+
+<p align="center">
+  <img src="Testsmerges.png" alt="Test Suite Execution & Regression Results" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="Test1.png" alt="Damage Detection & Segmentation Sample" width="80%"/>
+</p>
+
+---
+
+## 🎥 Live Screen Recording & Demo Walkthrough
+
+A complete end-to-end screen recording demonstrating the platform in action (Streamlit surveyor portal, live detection, 3D mesh projection, and statutory quote generation) is included in the repository:
+
+* 🎬 **Video File:** [`Screen Recording 2026-11-13 171637.mp4`](Screen%20Recording%202026-11-13%20171637.mp4) *(Tracked via Git LFS, ~179 MB)*
+
+> 💡 **Tip:** Click on the video link above or download [`Screen Recording 2026-11-13 171637.mp4`](Screen%20Recording%202026-11-13%20171637.mp4) directly from the repository to watch the full platform walkaround and feature demonstration.
 
 ---
 
