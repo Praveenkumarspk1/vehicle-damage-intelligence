@@ -1,0 +1,40 @@
+# ───────────────────────────────────────────────────────────────────────────────
+# Vehicle Damage Intelligence — Production Requirements
+# Senior-Level CV Project: ClearQuote-Grade Indian Bodyshop Estimator
+# ───────────────────────────────────────────────────────────────────────────────
+
+# ── Core CV & Deep Learning ─────────────────────────────────────────────────
+ultralytics>=8.0.0            # YOLOv8 detection + segmentation
+opencv-python>=4.8.0          # Image processing, BGR/HSV ops, quality gate
+numpy>=1.24.0                 # Array math, embedding computation
+Pillow>=9.5.0                 # Image I/O via PIL
+torch>=2.0.0                  # PyTorch (needed by ultralytics/torchvision)
+torchvision>=0.15.0           # VGG19 backbone
+
+# ── Segmentation (Optional — UNet) ─────────────────────────────────────────
+segmentation-models-pytorch>=0.3.3   # SMP UNet wrapper
+
+# ── Machine Learning / Cost Model ──────────────────────────────────────────
+scikit-learn>=1.3.0           # GradientBoosting regressor, train_gbr
+joblib>=1.3.0                 # Model serialization (.joblib artifacts)
+
+# ── Web / API ───────────────────────────────────────────────────────────────
+streamlit>=1.30.0             # Interactive Streamlit UI (app.py)
+flask>=3.0.0                  # REST API (api/flask_api.py)
+flask-cors>=4.0.0             # CORS headers for cross-origin API clients
+
+# ── Configuration & Data ────────────────────────────────────────────────────
+pyyaml>=6.0                   # config.yaml parsing
+
+# ── Visualization ───────────────────────────────────────────────────────────
+plotly>=5.0.0                 # Interactive 3D vehicle mesh (Plotly WebGL)
+
+# ── ONNX Runtime (Optional — production export) ────────────────────────────
+onnxruntime>=1.17.0           # ONNX model inference (deployment/)
+
+# ── Hugging Face Hub (model download) ──────────────────────────────────────
+huggingface_hub>=0.20.0       # HF model pull (optional training pipeline)
+
+# ── Development & Testing ──────────────────────────────────────────────────
+pytest>=8.0.0                 # Regression & integration test suite
+pytest-mock>=3.0.0            # Mocking for unit tests

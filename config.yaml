@@ -1,0 +1,214 @@
+# ClearQuote-Grade Vehicle Damage Intelligence & Automotive Repair Configuration
+model_path: "models/best.pt"
+alternative_model_path: "models/best.pt"
+conf_threshold: 0.35
+match_tolerance: 0.08
+embedding_mode: "classical"  # "learned" uses YOLO penultimate-layer features; requires fresh baselines
+
+data_dir: "data"
+slots:
+  - "front"
+  - "rear"
+  - "left"
+  - "right"
+
+# Fast Video Walkaround (2-3 second keyframe scan)
+video_walkaround:
+  sample_fps: 1.5
+  max_keyframes: 24
+  min_blur_threshold: 65.0
+  iou_cluster_thresh: 0.35
+
+# Image Quality Assessment & Glare Rejection
+quality_checks:
+  min_blur_score: 80.0
+  min_brightness: 40.0
+  max_brightness: 225.0
+  min_contrast: 25.0
+  glare_v_thresh: 245       # Specular highlight brightness threshold (HSV V)
+  glare_s_thresh: 35        # Specular highlight desaturation threshold (HSV S)
+
+# Location / City Tier Labor & Booth Rates (INR ₹)
+location_tiers:
+  "Tier 1 (Metros: Delhi, Mumbai, Bengaluru, Chennai, Hyd)":
+    denting_labor_hr: 480.0
+    paint_booth_panel: 2800.0
+    multiplier: 1.15
+  "Tier 2 (Cities: Pune, Ahmedabad, Coimbatore, Jaipur, Kochi)":
+    denting_labor_hr: 360.0
+    paint_booth_panel: 2200.0
+    multiplier: 1.00
+  "Tier 3 (Regional / Towns)":
+    denting_labor_hr: 260.0
+    paint_booth_panel: 1700.0
+    multiplier: 0.85
+
+# Workshop Categories
+workshop_types:
+  "Authorized OEM Dealer (ASS - 100% Genuine Parts)":
+    labor_markup: 1.20
+    parts_markup: 1.00
+    gst_rate: 0.18
+  "Multi-Brand Independent Bodyshop (GoMechanic / FNG)":
+    labor_markup: 0.80
+    parts_markup: 0.85
+    gst_rate: 0.18
+
+# Indian Vehicle Models Catalog & Part Replacement Costs (INR ₹)
+vehicle_models:
+  "Maruti Suzuki (Swift, Baleno, Brezza, Dzire)":
+    segment: "Hatchback / Budget Compact"
+    price_multiplier: 1.00
+    stock_lead_days: 1
+    availability: "Immediate Stock (24h)"
+    parts:
+      front-bumper-dent: 2200.0
+      rear-bumper-dent: 2100.0
+      bonnet-dent: 4200.0
+      doorouter-dent: 4400.0
+      fender-dent: 2200.0
+      quaterpanel-dent: 4800.0
+      roof-dent: 6500.0
+      Runningboard-Damage: 3200.0
+      Headlight-damage: 2400.0
+      Taillight-Damage: 1800.0
+      Sidemirror-Damage: 1400.0
+      Front-windscreen-damage: 4500.0
+      Rear-windscreen-Damage: 3800.0
+      flat_tire: 850.0
+      shattered_glass: 4200.0
+      default_part: 2800.0
+
+  "Hyundai (i20, Creta, Venue, Verna)":
+    segment: "Mid-tier Urban"
+    price_multiplier: 1.25
+    stock_lead_days: 2
+    availability: "In-Stock (24h - 48h)"
+    parts:
+      front-bumper-dent: 2800.0
+      rear-bumper-dent: 2600.0
+      bonnet-dent: 5400.0
+      doorouter-dent: 5600.0
+      fender-dent: 2800.0
+      quaterpanel-dent: 5800.0
+      roof-dent: 7800.0
+      Runningboard-Damage: 3800.0
+      Headlight-damage: 3800.0
+      Taillight-Damage: 2600.0
+      Sidemirror-Damage: 1800.0
+      Front-windscreen-damage: 5500.0
+      Rear-windscreen-Damage: 4500.0
+      flat_tire: 950.0
+      shattered_glass: 5200.0
+      default_part: 3500.0
+
+  "Tata Motors (Tiago, Altroz, Nexon, Harrier)":
+    segment: "High-Strength Steel / SUV"
+    price_multiplier: 1.30
+    stock_lead_days: 3
+    availability: "Warehouse Stock (48h - 72h)"
+    parts:
+      front-bumper-dent: 3100.0
+      rear-bumper-dent: 2900.0
+      bonnet-dent: 5800.0
+      doorouter-dent: 5900.0
+      fender-dent: 3000.0
+      quaterpanel-dent: 6200.0
+      roof-dent: 8200.0
+      Runningboard-Damage: 4200.0
+      Headlight-damage: 4200.0
+      Taillight-Damage: 2800.0
+      Sidemirror-Damage: 1900.0
+      Front-windscreen-damage: 5800.0
+      Rear-windscreen-Damage: 4800.0
+      flat_tire: 1000.0
+      shattered_glass: 5500.0
+      default_part: 3800.0
+
+  "Mahindra (Thar, Scorpio-N, XUV700)":
+    segment: "Heavy Body-on-Frame / Premium SUV"
+    price_multiplier: 1.65
+    stock_lead_days: 5
+    availability: "Central Order (3 - 5 Days)"
+    parts:
+      front-bumper-dent: 4200.0
+      rear-bumper-dent: 3900.0
+      bonnet-dent: 7800.0
+      doorouter-dent: 7600.0
+      fender-dent: 4100.0
+      quaterpanel-dent: 8200.0
+      roof-dent: 10500.0
+      Runningboard-Damage: 5500.0
+      Headlight-damage: 6500.0
+      Taillight-Damage: 4200.0
+      Sidemirror-Damage: 2800.0
+      Front-windscreen-damage: 7200.0
+      Rear-windscreen-Damage: 5900.0
+      flat_tire: 1400.0
+      shattered_glass: 6800.0
+      default_part: 5000.0
+
+  "Toyota (Innova Crysta, Hycross, Fortuner)":
+    segment: "Commercial & Premium Fleet"
+    price_multiplier: 1.85
+    stock_lead_days: 3
+    availability: "OEM Dealer Stock (48h)"
+    parts:
+      front-bumper-dent: 5200.0
+      rear-bumper-dent: 4800.0
+      bonnet-dent: 9500.0
+      doorouter-dent: 9200.0
+      fender-dent: 5100.0
+      quaterpanel-dent: 9800.0
+      roof-dent: 12500.0
+      Runningboard-Damage: 6800.0
+      Headlight-damage: 8500.0
+      Taillight-Damage: 5400.0
+      Sidemirror-Damage: 3400.0
+      Front-windscreen-damage: 8800.0
+      Rear-windscreen-Damage: 7200.0
+      flat_tire: 1600.0
+      shattered_glass: 8200.0
+      default_part: 6200.0
+
+  "German Luxury (BMW, Mercedes-Benz, Audi)":
+    segment: "Import Luxury / High Tech"
+    price_multiplier: 4.50
+    stock_lead_days: 14
+    availability: "Import Backorder (10 - 21 Days)"
+    parts:
+      front-bumper-dent: 28000.0
+      rear-bumper-dent: 26000.0
+      bonnet-dent: 45000.0
+      doorouter-dent: 42000.0
+      fender-dent: 24000.0
+      quaterpanel-dent: 48000.0
+      roof-dent: 65000.0
+      Runningboard-Damage: 22000.0
+      Headlight-damage: 48000.0
+      Taillight-Damage: 32000.0
+      Sidemirror-Damage: 18000.0
+      Front-windscreen-damage: 32000.0
+      Rear-windscreen-Damage: 28000.0
+      flat_tire: 3500.0
+      shattered_glass: 29000.0
+      default_part: 25000.0
+
+# Annotation Colors
+colors:
+  EXISTING:
+    rgb: [34, 197, 94]
+    bgr: [94, 197, 34]
+    hex: "#22c55e"
+  NEW:
+    rgb: [239, 68, 68]
+    bgr: [68, 68, 239]
+    hex: "#ef4444"
+  WORSENED:
+    rgb: [249, 115, 22]
+    bgr: [22, 115, 249]
+    hex: "#f97316"
+  BASELINE:
+    rgb: [59, 130, 246]
+    bgr: [246, 130, 59]
+    hex: "#3b82f6"

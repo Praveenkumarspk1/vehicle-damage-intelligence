@@ -1,0 +1,51 @@
+# Severity Estimation Configuration
+# Heuristic-based severity thresholds using damage area ratio
+# These thresholds are RULE-BASED and NOT clinically/industrially validated
+# Replace with trained model when labeled data becomes available
+
+severity_thresholds:
+  minor:
+    max_damage_area_ratio: 0.05    # Damage area < 5% of panel area
+    max_damage_count: 2            # Max 2 separate damage regions
+    description: "Minor cosmetic damage"
+  moderate:
+    max_damage_area_ratio: 0.20    # Damage area < 20% of panel area
+    max_damage_count: 5            # Max 5 separate damage regions
+    description: "Moderate structural damage"
+  severe:
+    max_damage_area_ratio: 1.0     # Damage area >= 20% or multiple panels
+    max_damage_count: 100          # Unlimited
+    description: "Severe structural damage"
+
+# Damage type severity weights (higher = more severe)
+damage_type_weights:
+  Breakage: 1.5
+  Crushed: 1.3
+  Separated: 1.2
+  Scratched: 1.0
+
+# Confidence thresholds
+confidence_threshold:
+  detection: 0.25      # Minimum confidence for damage detection
+  classification: 0.30 # Minimum confidence for damage type classification
+
+# Panel area reference (approximate pixel areas at 640x640 input)
+# These are rough estimates for normalization
+panel_reference_areas:
+  FrontBumper: 45000
+  RearBumper: 45000
+  FrontFender: 25000
+  RearFender: 25000
+  Bonnet: 55000
+  TrunkLid: 50000
+  FrontDoor: 40000
+  RearDoor: 35000
+  SideMirror: 8000
+  HeadLights: 12000
+  FrontWheel: 15000
+  RearWheel: 15000
+
+# Method identifier
+method: "rule_based"
+version: "1.0"
+disclaimer: "This is a heuristic estimator. Not validated for insurance/legal use."

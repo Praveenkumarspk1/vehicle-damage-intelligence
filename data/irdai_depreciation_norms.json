@@ -1,0 +1,67 @@
+{
+  "regulatory_authority": "Insurance Regulatory and Development Authority of India (IRDAI)",
+  "governing_rules": "Indian Motor Tariff (IMT) Regulations",
+  "material_depreciation": {
+    "Rubber / Nylon / Plastic Parts / Tyres / Batteries": {
+      "depreciation_percent": 50.0,
+      "statutory_basis": "IMT Section 8 - 50% flat depreciation on all plastic and composite components",
+      "examples": [
+        "Front Bumper",
+        "Rear Bumper",
+        "Side Mirror Covers",
+        "Tires",
+        "Nylon Bushings"
+      ]
+    },
+    "Glass Components": {
+      "depreciation_percent": 0.0,
+      "statutory_basis": "IMT Section 8 - Nil depreciation on all automotive glass panels",
+      "examples": [
+        "Front Windshield",
+        "Rear Windshield",
+        "Side Window Glass",
+        "Sunroof Glass"
+      ]
+    },
+    "Fiber Glass Components": {
+      "depreciation_percent": 30.0,
+      "statutory_basis": "IMT Section 8 - 30% standard depreciation",
+      "examples": [
+        "Fiber Hardtop",
+        "Custom Body Spoilers"
+      ]
+    },
+    "Metal / Sheet Metal Parts": {
+      "depreciation_schedule_by_vehicle_age": {
+        "Up to 6 months": 0.0,
+        "6 months to 1 year": 5.0,
+        "1 year to 2 years": 10.0,
+        "2 years to 3 years": 15.0,
+        "3 years to 4 years": 25.0,
+        "4 years to 5 years": 35.0,
+        "5 years to 10 years": 40.0,
+        "Over 10 years": 50.0
+      },
+      "examples": [
+        "Bonnet / Hood",
+        "Fenders",
+        "Doors",
+        "Quarter Panels",
+        "Roof"
+      ]
+    }
+  },
+  "compulsory_deductibles_inr": {
+    "Four-wheelers <= 1500cc": 1000.0,
+    "Four-wheelers > 1500cc": 2000.0,
+    "Commercial Vehicles": 2500.0
+  },
+  "no_claim_bonus_slabs_pct": [
+    0,
+    20,
+    25,
+    35,
+    45,
+    50
+  ]
+}

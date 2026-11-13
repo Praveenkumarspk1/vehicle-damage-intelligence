@@ -1,0 +1,51 @@
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# Ultralytics & Model Checkpoints / Runs
+runs/
+*.onnx
+
+# Runtime Outputs (Preserve folder structure via .gitkeep)
+outputs/uploads/*
+!outputs/uploads/.gitkeep
+outputs/annotations/*
+!outputs/annotations/.gitkeep
+outputs/comparisons/*
+!outputs/comparisons/.gitkeep
+outputs/inspections/*
+!outputs/inspections/.gitkeep
+outputs/api/*
+!outputs/api/.gitkeep
+outputs/*.png
+outputs/*.jpg
+outputs/*.mp4
+outputs/*.json
+outputs/*.md
+outputs/*.csv
+
+# OS Artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+
+# IDEs
+.idea/
+.vscode/
+*.swp

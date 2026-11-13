@@ -1,0 +1,5 @@
+city_category,location_tier,major_cities,hourly_denting_rate_inr,paint_booth_per_panel_inr,oem_multiplier,fng_multiplier,gst_rate_pct
+Metro A+,Tier 1,"Delhi NCR, Mumbai, Bengaluru, Chennai, Hyderabad, Kolkata",480,2800,1.20,0.80,18
+State Capitals / Industrial,Tier 2,"Pune, Ahmedabad, Chandigarh, Jaipur, Lucknow, Kochi, Coimbatore",360,2200,1.15,0.85,18
+District / Semi-Urban,Tier 3,"Indore, Patna, Bhopal, Vadodara, Nashik, Madurai, Meerut",260,1700,1.05,0.90,18
+Rural / Taluk Outpost,Tier 4,Rest of India Bodyshops,200,1300,1.00,0.95,18
