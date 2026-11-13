@@ -1,7 +1,7 @@
 # 🚗 AI Vehicle Damage Inspection & Automated Appraisal Platform
 
-> **Production-Grade Computer Vision Architecture & Automated Damage Assessment**  
-> Autonomous Vehicle Inspection · YOLOv8-Seg · ByteTrack Tracking · Before/After Diffing · Repair Cost Engine · Interactive UI · REST API
+> **Production-Grade Computer Vision Architecture & Statutory Bodyshop Appraisal**  
+> Autonomous Vehicle Inspection · YOLOv8-Seg · ByteTrack Tracking · Before/After Diffing · IRDAI & GIPSA Quoting · 3D Mesh · Interactive UI · REST API
 
 [![Tests](https://img.shields.io/badge/tests-98%20passed%201%20skipped-brightgreen)](#)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](#)
@@ -61,13 +61,13 @@ Instead of a human manually inspecting the entire vehicle—a process prone to h
 
 1. **Image & Video Input**: Upload single or multi-angle photos (Front, Rear, Left, Right) or record a 360° walkaround video.
 2. **Vehicle Panel Detection**: YOLOv8 locates external panels (doors, bumpers, hood/bonnet, fenders, roof, quarter panels, lights, glass).
-3. **Damage Detection**: Fine-tuned deep learning models detect damage classes across body panels.
+3. **Damage Detection**: Fine-tuned deep learning models detect 14 distinct damage classes across body panels.
 4. **Exact Segmentation**: YOLOv8-Seg generates pixel-accurate polygon masks over damaged regions rather than coarse bounding boxes.
 5. **Damage Classification**: Accurately categorizes each anomaly into specific damage types (dent, scratch, tear, shatter).
 6. **Severity Estimation**: Gauges damage depth, affected surface area ratio, and structural integrity (classified into *Minor*, *Moderate*, or *Severe*).
 7. **Before-and-After Comparison**: OpenCV affine alignment and a 128-D visual feature embedding compare historical check-in data with return condition to distinguish pre-existing damage from newly incurred damage.
 8. **Performance Optimization**: Powered by ONNX Runtime for ultra-low latency inference and ByteTrack for robust multi-frame tracking in walkaround videos.
-9. **Automated Repair Cost Engine**: Incorporates standardized parts catalogs, labor rates, and official depreciation norms for complete repair cost estimates.
+9. **Automated Repair Cost Engine**: Grounded in official statutory depreciation norms, regional labor schedules, and OEM parts catalogs.
 
 ---
 
@@ -81,8 +81,8 @@ Instead of a human manually inspecting the entire vehicle—a process prone to h
 | **OpenCV & NumPy** | High-performance image processing, feature extraction, and affine alignment |
 | **ONNX Runtime** | High-throughput, low-latency CPU/GPU model inference optimization |
 | **ByteTrack** | Association-based multi-object tracking for video walkaround keyframe tracking |
-| **Streamlit** | Interactive surveyor dashboard and web portal UI |
-| **Flask** | Production-ready REST API microservice with OpenAPI/Swagger compatibility |
+| **Streamlit** | Interactive surveyor dashboard, 3D mesh rendering, and web portal UI |
+| **Flask** | Production-ready REST API microservice with OpenAPI compatibility |
 | **Scikit-Learn** | Calibrated Gradient Boosting (GBR) cost regressor |
 
 ---
@@ -97,11 +97,65 @@ Instead of a human manually inspecting the entire vehicle—a process prone to h
 
 ---
 
+## 🌟 Advanced Enterprise Features
+
+### 1. 🛰️ 3D Vehicle Spatial Mesh
+- Maps detected 2D panel defects onto a **3D interactive vehicle wireframe**.
+- Projects $(X, Y, Z)$ spatial coordinates of damaged zones relative to vehicle center of gravity.
+- Enables surveyors and fleet managers to inspect vehicle damage holistically in full 3D space.
+
+### 2. 👨‍💼 Human-in-the-Loop Surveyor Console
+- Production-grade override interface enabling licensed insurance surveyors to audit AI estimates.
+- Support for adjusting part actions (*Repair* $\leftrightarrow$ *Replace*), labor hours, and paint booth tiers.
+- Generates a cryptographically trackable audit log with timestamped surveyor rationales.
+
+### 3. ⏱️ Turnaround Time (TAT) & Fleet Downtime Modeler
+- Calculates estimated garage repair turnaround time in business days.
+- Sourcing status indicator (In-Stock, 48-Hour Express, or 5-Day Backorder).
+- Computes operational downtime loss for fleet owners ($\text{Daily Revenue} \times \text{TAT Days}$).
+
+### 4. 🛡️ NCB (No-Claim Bonus) Protection Advisor
+- Financial decision engine comparing the repair estimate against compulsory policy deductibles.
+- Analyzes potential multi-year NCB loss to advise whether filing an insurance claim is financially advantageous.
+
+### 5. 📊 Calibrated Gradient Boosting Cost Regressor ($R^2 = 0.99$)
+- Machine learning regression model trained on comprehensive repair pricing data.
+- Dual-engine architecture: Cross-validates empirical ML estimates against statutory IRDAI formulas to guarantee realistic bounds.
+
+---
+
+## 🇮🇳 Statutory Bodyshop Standards & Regulatory Pricing Engine
+
+The platform includes curated, statutory-grounded datasets standardized against official automotive bodies:
+
+| Dataset File | Governing Standard | Scope & Contents |
+|---|---|---|
+| `data/indian_bodyshop_parts_pricing.csv` | **IRDAI + GIPSA** standard | 84 standardized parts across 6 major OEMs |
+| `data/irdai_depreciation_norms.json` | **IMT Regulations** | Statutory age-based depreciation schedules |
+| `data/gipsa_bodyshop_labor_schedule.csv` | **GIPSA Schedule** | Tier-1 (Metro), Tier-2, and Tier-3 labor & paint rates |
+| `data/indian_vehicle_registrations_gov.csv` | **data.gov.in** | Government vehicle registration & classification norms |
+
+### OEM & Vehicle Coverage
+* **Maruti Suzuki** (Swift, Baleno, Brezza, Dzire, Ertiga)
+* **Hyundai** (i20, Creta, Venue, Verna)
+* **Tata Motors** (Nexon, Punch, Harrier, Altroz)
+* **Mahindra** (Thar, Scorpio-N, XUV700, Bolero)
+* **Toyota** (Innova Crysta, Fortuner, Glanza, Urban Cruiser)
+* **German Luxury** (BMW 3-Series, Mercedes C-Class, Audi A4)
+
+### Statutory Rules Grounded in Code
+* **Material Physics Depreciation**: Plastic parts depreciated at flat 50%; Glass parts depreciated at 0%; Sheet metal depreciated strictly according to official vehicle age brackets ($0\text{–}6\text{ months: } 0\%$, up to $>10\text{ years: } 50\%$).
+* **Location Tier Pricing**: Automatically switches labor hourly rates and 2K paint booth charges based on Metro, Tier-2, or Tier-3 location.
+* **Workshop Multiplier**: Accurately handles OEM Authorized Service Stations (ASS) vs Independent FNG garages.
+* **Statutory GST Breakdown**: Full 18% GST calculation (9% CGST + 9% SGST) itemized across parts and labor.
+
+---
+
 ## 🏗️ Architecture & Module Organization
 
 ```
 vehicle-damage-intelligence/
-├── app.py                          # Full-featured Streamlit Web Portal & Surveyor UI
+├── app.py                          # Streamlit Web Portal (Surveyor UI, 3D Mesh & Blueprint)
 ├── run.py                          # Master CLI Runner (ui | api | test | eval | train)
 ├── run.bat                         # One-click Windows runner
 ├── run.ps1                         # PowerShell script runner
@@ -198,10 +252,23 @@ Execute the regression and integration test suite:
 python run.py --mode test
 ```
 ```text
-======================= 98 passed, 1 skipped in 31.95s ========================
+======================= 98 passed, 1 skipped in 20.22s ========================
 ```
 
-### 5. Docker Deployment
+### 5. Training & Evaluation Commands
+
+```bash
+# Train GBR cost regressor (~5 seconds)
+python run.py --mode train --target gbr
+
+# Fine-tune YOLOv8 on damage dataset
+python run.py --mode train --target yolo
+
+# Run COCO mAP50-95 model evaluation
+python run.py --mode eval --model models/best.pt
+```
+
+### 6. Docker Deployment
 
 Deploy with Docker for containerized production:
 
