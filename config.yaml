@@ -1,4 +1,4 @@
-# ClearQuote-Grade Vehicle Damage Intelligence & Automotive Repair Configuration
+# Enterprise-Grade Vehicle Damage Intelligence & Automotive Repair Configuration
 model_path: "models/best.pt"
 alternative_model_path: "models/best.pt"
 conf_threshold: 0.35

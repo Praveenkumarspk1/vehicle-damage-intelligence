@@ -397,12 +397,12 @@ def generate_surveyor_markdown_report(
 
 
 def main() -> None:
-    """Launch ClearQuote Mini Streamlit Portal."""
-    st.set_page_config(page_title="ClearQuote Mini | AI Vehicle Inspection", page_icon="🛡️", layout="wide")
+    """Launch Streamlit Web Portal."""
+    st.set_page_config(page_title="AI Vehicle Damage Inspection & Estimator", page_icon="🛡️", layout="wide")
     cfg = load_config()
 
 
-    st.sidebar.title("🛡️ ClearQuote Mini")
+    st.sidebar.title("🛡️ Damage Intelligence")
     st.sidebar.caption("AI Vehicle Damage Inspection & Indian Bodyshop Estimator")
 
     vehicle_id = st.sidebar.text_input("Vehicle Plate Number / VIN", value="KA-01-MJ-2026").strip().upper()
@@ -655,7 +655,7 @@ def main() -> None:
         if show_3d_mesh:
             render_3d_vehicle_mesh(evaluated_damages)
 
-        st.subheader("💰 ClearQuote Itemized Bodyshop Estimate (INR ₹)")
+        st.subheader("💰 Itemized Bodyshop Estimate (INR ₹)")
 
         total_quote = sum(d.quote.total_cost for d in evaluated_damages)
         total_labor_cost = sum(d.quote.denting_labor_cost for d in evaluated_damages)
@@ -698,7 +698,7 @@ def main() -> None:
 
 
         st.markdown("---")
-        st.subheader("💡 ClearQuote Gap-Solving Solutions")
+        st.subheader("💡 Automated Appraisal & Operational Insights")
         ps1, ps2, ps3 = st.columns(3)
 
         tat_info = estimate_turnaround_and_downtime(evaluated_damages, sel_model, daily_revenue, cfg)

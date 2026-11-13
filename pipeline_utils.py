@@ -1,4 +1,4 @@
-"""ClearQuote Gap-Solving Vehicle Damage Intelligence & Automotive Costing Engine.
+"""Enterprise Vehicle Damage Intelligence & Automotive Costing Engine.
 
 Canonical facade re-exporting from cost_engine.indian_repair_quote to eliminate duplicate code.
 Maintains 100% backward compatibility with existing tests and scripts.

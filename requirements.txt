@@ -1,6 +1,6 @@
 # ───────────────────────────────────────────────────────────────────────────────
 # Vehicle Damage Intelligence — Production Requirements
-# Senior-Level CV Project: ClearQuote-Grade Indian Bodyshop Estimator
+# Senior-Level CV Project: Production-Grade Automotive Damage Estimator
 # ───────────────────────────────────────────────────────────────────────────────
 
 # ── Core CV & Deep Learning ─────────────────────────────────────────────────
